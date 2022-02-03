@@ -2,7 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { ru_RU } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import ru from '@angular/common/locales/ru';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(ru);
 
 @NgModule({
   declarations: [
@@ -10,9 +19,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
