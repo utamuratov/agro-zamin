@@ -39,7 +39,7 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'agro-id',
+        path: ':language/agro-id',
         loadChildren: () =>
           import('./modules/agro-id/agro-id.module').then(
             (m) => m.AgroIdModule
