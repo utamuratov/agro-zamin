@@ -1,0 +1,32 @@
+<form nz-form class="login-form" nzLayout="vertical" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<!-- EMAIL INPUT FIELD -->
+  <ng-template #phone>
+    <nz-form-item>
+      <nz-form-label nzFor="email" nzRequired [nzSpan]="7">Введите email адрес</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Некорректное значение email">
+        <input nz-input formControlName="email" id="email" placeholder="Введите ваш Email адрес" />
+      </nz-form-control>
+    </nz-form-item>
+  </ng-template>
+
+  <!-- PHONE INPUT FIELD -->
+  <div *ngIf="toggle; else phone">
+    <nz-form-item>
+      <nz-form-label nzFor="phoneNumber" nzRequired [nzSpan]="7">Введите номер телефона</nz-form-label>
+      <nz-form-control
+        [nzSpan]="12"
+        [nzValidateStatus]="validateForm.controls['phoneNumber']"
+        nzErrorTip="Пожалуйста введите номер телефона">
+        <input formControlName="phoneNumber" id="'phoneNumber'" placeholder="+998(--)1234567" nz-input />
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <a style="padding: 4px 0" nz-button nzType="link" (click)="toggleInfo()">{{buttonTxt ? 'У меня нет телефона' : 'У меня нет email адреса'}}</a>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="12">
+      <button (click)="prevComponent()" nz-button nzSize="large" nzType="primary" class="signUnBtn" nzBlock >Назад</button>
+      <button [disabled]="!validateForm.valid" (click)="nextComponent()" nz-button nzSize="large" nzType="primary" class="signUnBtn" nzBlock >Подтвердить</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
