@@ -1,11 +1,14 @@
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <!-- LOGIN INPUT FIELD -->
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input your username!">
         <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="userName" placeholder="Username" />
+          <input type="text" nz-input formControlName="login" placeholder="Username" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+
+    <!-- PASSWORD INPUT FIELD -->
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input your Password!">
         <nz-input-group nzPrefixIcon="lock">
@@ -13,6 +16,8 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+
+    <!-- OPTIONS -->
     <div nz-row class="login-form-margin">
       <div nz-col [nzSpan]="12">
         <label nz-checkbox formControlName="remember">
