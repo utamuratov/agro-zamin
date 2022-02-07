@@ -1,0 +1,32 @@
+<form nz-form class="info-form" nzLayout="vertical" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<!-- FIRST NAME INPUT FIELD -->
+<nz-form-item>
+  <nz-form-label [nzSpan]="7">Имя</nz-form-label>
+  <nz-form-control [nzSpan]="12">
+    <input
+      nz-input
+      formControlName="firstName"
+      placeholder="Введите ваше имя"
+    />
+  </nz-form-control>
+</nz-form-item>
+
+<nz-form-item> 
+  <nz-form-label [nzSpan]="7">Фамилия</nz-form-label>
+  <nz-form-control [nzSpan]="12">
+    <input
+      nz-input
+      formControlName="lastName"
+      placeholder="Введите вашу фамилию"
+    />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item nz-row class="register-area">
+  <nz-form-control [nzSpan]="12">
+    <button nz-button (click)="nextComponent()" class="" nzType="default">Пропустить</button>
+    <button nz-button (click)="nextComponent()" class="" nzType="primary">Сохранить</button>
+  </nz-form-control>
+</nz-form-item>
+
+</form>
+

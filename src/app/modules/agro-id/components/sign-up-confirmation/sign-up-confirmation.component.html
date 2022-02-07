@@ -1,0 +1,32 @@
+<form nz-form class="confirm-form" nzLayout="horizontal" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item nz-row>
+    <nz-form-control nz-col class="confirm-control">
+      <input maxlength="1" formControlName="num1" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+    <nz-form-control nz-col class="confirm-control">
+      <input maxlength="1" formControlName="num2" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+    <nz-form-control nz-col class="confirm-control">
+      <input maxlength="1" formControlName="num3" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+    <nz-form-control nz-col class="confirm-control">
+      <input maxlength="1" formControlName="num4" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+    <nz-form-control nz-col class="confirm-control">
+      <input maxlength="1" formControlName="num5" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+    <nz-form-control nz-col  class="confirm-control">
+      <input maxlength="1" formControlName="num6" nz-input class="confirm-input" type="text">
+    </nz-form-control>
+  </nz-form-item >
+
+  <div>
+    <a>Отправить код снова <i nz-icon nzType="redo" nzTheme="outline"></i></a>
+  </div>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="12">
+      <button nz-button class="" nzType="primary" (click)="nextComponent()" [disabled]="!validateForm.valid">Зарегестрироваться</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
