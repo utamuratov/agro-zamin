@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,8 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.page.less']
 })
 export class SignUpPage implements OnInit {
-  
+  carouselItems = [1, 2, 3, 4];
   signUpForm = 'info'
+
   constructor() { }
 
   ngOnInit() {
