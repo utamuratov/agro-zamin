@@ -9,7 +9,7 @@ import { SEOResolver } from './core/resolvers/seo.resolver';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: LanguageService.getCurrentLanguage(),
+    redirectTo: LanguageService.currentLanguage,
     pathMatch: 'full',
   },
   {

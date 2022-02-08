@@ -1,19 +1,15 @@
-import { Injectable } from '@angular/core';
 import { Constants } from '../config/constants';
 import { LocalStorageService } from './local-storage.service';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class LanguageService {
   /**
    *
    */
-  static getCurrentLanguage() {
-    let code = localStorage.getItem(LocalStorageService.LANGUAGE);
+  static get currentLanguage() {
+    let code = LocalStorageService.get(LocalStorageService.LANGUAGE);
     if (!code) {
       code = Constants.DEFAULT_LANGUAGE_CODE;
-      this.setCurrentLanguage(code);
+      this.currentLanguage = code;
     }
     return code;
   }
@@ -21,7 +17,7 @@ export class LanguageService {
   /**
    *
    */
-  static setCurrentLanguage(code: string) {
-    localStorage.setItem(LocalStorageService.LANGUAGE, code);
+  static set currentLanguage(code: string) {
+    LocalStorageService.set(LocalStorageService.LANGUAGE, code);
   }
 }

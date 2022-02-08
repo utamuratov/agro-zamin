@@ -35,25 +35,16 @@ export class HeaderComponent implements OnInit {
     *
     */
   ngOnInit() {
-    this.currentLanguageCode = LanguageService.getCurrentLanguage();
+    this.currentLanguageCode = LanguageService.currentLanguage;
     this.setCurrentLanguage(this.currentLanguageCode);
-    this.translate.get('home.title').subscribe((translated: string) => {
-      console.log(translated);
-      //=> 'Hello world'
-
-      // You can call instant() here
-      const translation = this.translate.instant('home.breadcrumb');
-      console.log(translation);
-      //=> 'Something else'
-  });
   }
 
   /**
    *
    */
   onChangeLanguage() {
-    const previousLanguageCode = LanguageService.getCurrentLanguage();
-    LanguageService.setCurrentLanguage(this.currentLanguageCode);
+    const previousLanguageCode = LanguageService.currentLanguage;
+    LanguageService.currentLanguage = this.currentLanguageCode;
     this.router.navigateByUrl(this.router.url.replace(previousLanguageCode, this.currentLanguageCode));
     this.setCurrentLanguage(this.currentLanguageCode);
   }
