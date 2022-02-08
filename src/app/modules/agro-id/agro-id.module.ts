@@ -19,6 +19,9 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
     NzCheckboxModule,
     NzIconModule,
     NzResultModule,
-    NzStepsModule
+    NzStepsModule,
+    NzCarouselModule,
+    NzLayoutModule,
+    NzDividerModule
   ],
   declarations: [
     AgroIdComponent,
