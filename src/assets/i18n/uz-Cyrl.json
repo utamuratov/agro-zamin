@@ -1,4 +1,16 @@
 {
-  "home": "Асосий",
-  "onlineConsultant": "Актив консултантлар"
+  "home": {
+    "title": "Асосий",
+    "breadcrumb": "Асосий",
+    "description": "Асосий сахифа"
+  },
+  "onlineConsultant": {
+    "title": "Актив консултантлар",
+    "breadcrumb": "Актив консултантлар"
+  },
+  "market": {
+    "title": "Ўзимизники",
+    "breadcrumb": "Ўзимизники"
+  }
 }
+
