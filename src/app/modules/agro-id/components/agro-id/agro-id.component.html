@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<div nz-row class="sign-up">
+    <div nz-col nzSm="12" class="sign-up__left">
+      <img
+        class="sign-up__left-img"
+        src="../../../../../assets/images/agro-id-images/carousel1.jpg"
+        alt="backGround Image"
+      />
+      <h2 class="logo" nz-typography>AgroID</h2>
+      <div class="sign-up__left-description">
+        <h3 nz-typography>Вы хотите продавать?</h3>
+        <p>
+          У вас есть собственный продукт или услуга? Вы можете начать продавать
+          его на нашей платформе.
+        </p>
+        <img src="../../../../../assets/images/agro-id-images/logo.svg" alt="agrozamin logo">        
+      </div>
+    </div>
+  
+    <div nz-col class="sign-up__forms" nzSm="12">
+        <img class="triangle" src="../../../../../assets/images/agro-id-images/topTriangle.png" alt="triangle">
+        <div class="inputsForm">
+            <router-outlet></router-outlet>
+            <div nz-row nzAlign="middle" nzJustify="end">
+                <button class="langBtn active" nz-button nzType="text">Рус</button>
+                <nz-divider nzType="vertical"></nz-divider>
+                <button class="langBtn" nz-button nzType="text">Узб</button>
+                <nz-divider nzType="vertical"></nz-divider>
+                <button class="langBtn" nz-button nzType="text">Uzb</button>
+              </div>
+        </div>        
+    </div>
+    
+  </div>
+
+
+

@@ -1,21 +1,26 @@
-<div nz-row class="sign-up">
 
-  <div nz-col nzSpan="12">
-    <nz-carousel nzAutoPlay>
-      <div class="carouselContent" nz-carousel-content *ngFor="let index of carouselItems">
-        <h3>{{ index }}</h3>
-      </div>
-    </nz-carousel>
-  </div>
- 
-  <div nz-col nzSpan="12" [ngSwitch]="signUpForm">
-    <h3 nz-typography>Регистрация</h3>
-    <app-sign-up-info (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'info'"></app-sign-up-info>
-    <app-sign-up-password (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'password'"></app-sign-up-password>
-    <app-sign-up-login (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'login'"></app-sign-up-login>
-    <app-sign-up-confirmation (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'confirm'"></app-sign-up-confirmation>
-    <app-sign-up-success *ngSwitchCase="'success'"></app-sign-up-success>
-  </div>
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Регистрация"></nz-step>
+  <nz-step nzTitle="Подтверждение"></nz-step>
+</nz-steps>
 
+<div [ngSwitch]="signUpForm">
+  <h3 nz-typography>Регистрация</h3>
+  <app-sign-up-info
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'info'"
+  ></app-sign-up-info>
+  <app-sign-up-password
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'password'"
+  ></app-sign-up-password>
+  <app-sign-up-login
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'login'"
+  ></app-sign-up-login>
+  <app-sign-up-confirmation
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'confirm'"
+  ></app-sign-up-confirmation>
+  <app-sign-up-success *ngSwitchCase="'success'"></app-sign-up-success>
 </div>
-

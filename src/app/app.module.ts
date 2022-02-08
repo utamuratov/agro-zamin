@@ -29,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LayoutComponent, HeaderComponent],
+  declarations: [ AppComponent, HomeComponent, LayoutComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

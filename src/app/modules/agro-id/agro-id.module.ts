@@ -20,6 +20,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
     NzIconModule,
     NzResultModule,
     NzStepsModule,
-    NzCarouselModule
+    NzCarouselModule,
+    NzLayoutModule,
+    NzDividerModule
   ],
   declarations: [
     AgroIdComponent,
