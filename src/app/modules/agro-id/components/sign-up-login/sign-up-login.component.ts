@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up-login',
@@ -25,6 +26,9 @@ export class SignUpLoginComponent implements OnInit {
         [Validators.required, Validators.pattern(this.validPhone)],
       ],
       email: [null, [Validators.email]],
+      password: [null, [Validators.required]],
+      confirm: [null, [this.confirmValidator]],
+      agree: [null, [Validators.requiredTrue]],
     });
   }
 
@@ -62,6 +66,33 @@ export class SignUpLoginComponent implements OnInit {
     this.toggle = !this.toggle;
     this.buttonTxt = !this.buttonTxt;
   }
+
+  validateConfirmPassword(): void {
+    setTimeout(() => this.validateForm.controls['confirm'].updateValueAndValidity());
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  userNameAsyncValidator = (control: FormControl) =>
+    new Observable((observer: Observer<ValidationErrors | null>) => {
+      setTimeout(() => {
+        if (control.value === 'JasonWood') {
+          // you have to return `{error: true}` to mark it as an error event
+          observer.next({ error: true, duplicated: true });
+        } else {
+          observer.next(null);
+        }
+        observer.complete();
+      }, 1000);
+    });
+
+  confirmValidator = (control: FormControl): { [s: string]: boolean } => {
+    if (!control.value) {
+      return { error: true, required: true };
+    } else if (control.value !== this.validateForm.controls['password'].value) {
+      return { confirm: true, error: true };
+    }
+    return {};
+  };
 
   nextComponent(): void {
     this.submitForm()
