@@ -1,27 +1,26 @@
-<div [ngSwitch]="signUpForm">
-  <app-sign-up-info (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'info'"></app-sign-up-info>
-  <app-sign-up-password (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'password'"></app-sign-up-password>
-  <app-sign-up-login (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'login'"></app-sign-up-login>
-  <app-sign-up-confirmation (changeComponentEvent)="swtichTo($event)" *ngSwitchCase="'confirm'"></app-sign-up-confirmation>
-  <app-sign-up-success *ngSwitchCase="'success'"></app-sign-up-success>
-</div>
 
-
-<!-- <nz-steps [nzCurrent]="current">
-  <nz-step nzTitle="Finished"></nz-step>
-  <nz-step nzTitle="In Progress"></nz-step>
-  <nz-step nzTitle="Waiting"></nz-step>
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Регистрация"></nz-step>
+  <nz-step nzTitle="Подтверждение"></nz-step>
 </nz-steps>
 
-<div class="steps-content">{{ index }}</div>
-<div class="steps-action">
-  <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
-    <span>Previous</span>
-  </button>
-  <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
-    <span>Next</span>
-  </button>
-  <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
-    <span>Done</span>
-  </button>
-</div> -->
+<div [ngSwitch]="signUpForm">
+  <h3 nz-typography>Регистрация</h3>
+  <app-sign-up-info
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'info'"
+  ></app-sign-up-info>
+  <app-sign-up-password
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'password'"
+  ></app-sign-up-password>
+  <app-sign-up-login
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'login'"
+  ></app-sign-up-login>
+  <app-sign-up-confirmation
+    (changeComponentEvent)="swtichTo($event)"
+    *ngSwitchCase="'confirm'"
+  ></app-sign-up-confirmation>
+  <app-sign-up-success *ngSwitchCase="'success'"></app-sign-up-success>
+</div>
