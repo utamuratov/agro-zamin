@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { forkJoin, map, Observable, of } from 'rxjs';
 import { SEOService } from '../services/seo.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SEOResolver implements Resolve<boolean> {
   /**
    *
@@ -17,23 +15,22 @@ export class SEOResolver implements Resolve<boolean> {
   /**
    *
    */
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    this.setMeta(route);
-    return of(true);
+  resolve(route: ActivatedRouteSnapshot): Observable<boolean> {
+    return this.setMeta(route);
   }
 
   /**
    *
    */
-  setMeta(node: ActivatedRouteSnapshot) {
-    console.log(node.data);
+  setMeta(node: ActivatedRouteSnapshot): Observable<boolean> {
     if (node.data['meta']) {
       const meta = node.data['meta'];
-      this.$sEOService.updateTitle(meta.title);
-      this.$sEOService.updateDescription(meta.description);
+      return forkJoin([
+        this.$sEOService.updateTitle(meta.title),
+        this.$sEOService.updateDescription(meta.description),
+      ]).pipe(map(() => true));
     }
+
+    return of(false);
   }
 }

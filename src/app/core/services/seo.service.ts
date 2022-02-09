@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable, tap } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SEOService {
   constructor(
     private $title: Title,
@@ -13,17 +16,23 @@ export class SEOService {
   /**
    *
    */
-  updateTitle(title: string) {
-    title = this.$translate.instant(title);
-    this.$title.setTitle(title);
+  updateTitle(title: string): Observable<string> {
+    return this.$translate.get(title).pipe(
+      tap((translated) => {
+        this.$title.setTitle(translated);
+      })
+    );
   }
 
   /**
    *
    */
-  updateDescription(content: string) {
-    content = this.$translate.instant(content);
-    this.$meta.updateTag({ name: 'description', content });
+  updateDescription(content: string): Observable<string> {
+    return this.$translate.get(content).pipe(
+      tap((translated) => {
+        this.$meta.updateTag({ name: 'description', translated });
+      })
+    );
   }
 
   /**

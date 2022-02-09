@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Constants } from 'src/app/core/config/constants';
-import { LanguageService } from 'src/app/core/services/language.service';
-import { Language } from 'src/app/shared/models/language.interface';
+import { LanguageUtilit } from 'src/app/core/utilits/language.utilit';
 
 @Component({
   selector: 'header',
@@ -35,25 +34,16 @@ export class HeaderComponent implements OnInit {
     *
     */
   ngOnInit() {
-    this.currentLanguageCode = LanguageService.getCurrentLanguage();
+    this.currentLanguageCode = LanguageUtilit.currentLanguage;
     this.setCurrentLanguage(this.currentLanguageCode);
-    this.translate.get('home.title').subscribe((translated: string) => {
-      console.log(translated);
-      //=> 'Hello world'
-
-      // You can call instant() here
-      const translation = this.translate.instant('home.breadcrumb');
-      console.log(translation);
-      //=> 'Something else'
-  });
   }
 
   /**
    *
    */
   onChangeLanguage() {
-    const previousLanguageCode = LanguageService.getCurrentLanguage();
-    LanguageService.setCurrentLanguage(this.currentLanguageCode);
+    const previousLanguageCode = LanguageUtilit.currentLanguage;
+    LanguageUtilit.currentLanguage = this.currentLanguageCode;
     this.router.navigateByUrl(this.router.url.replace(previousLanguageCode, this.currentLanguageCode));
     this.setCurrentLanguage(this.currentLanguageCode);
   }

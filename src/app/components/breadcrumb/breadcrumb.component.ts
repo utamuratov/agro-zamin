@@ -23,7 +23,6 @@ export class BreadcrumbComponent
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
-      console.log(this.router.routerState);
       this.parseRoute(this.router.routerState.snapshot.root);
     });
   }
