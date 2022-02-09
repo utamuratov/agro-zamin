@@ -1,12 +1,12 @@
 import { Constants } from '../config/constants';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageUtilit } from './local-storage.utilit';
 
-export class LanguageService {
+export class LanguageUtilit {
   /**
    *
    */
   static get currentLanguage() {
-    let code = LocalStorageService.get(LocalStorageService.LANGUAGE);
+    let code = LocalStorageUtilit.get(LocalStorageUtilit.LANGUAGE);
     if (!code) {
       code = Constants.DEFAULT_LANGUAGE_CODE;
       this.currentLanguage = code;
@@ -18,6 +18,6 @@ export class LanguageService {
    *
    */
   static set currentLanguage(code: string) {
-    LocalStorageService.set(LocalStorageService.LANGUAGE, code);
+    LocalStorageUtilit.set(LocalStorageUtilit.LANGUAGE, code);
   }
 }

@@ -1,11 +1,10 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { isDevMode } from '@angular/core';
 import { HttpResponseStatusCode } from '../config/http-response-code';
 import { SettingsHelperModel } from '../models/settings-helper.model';
 
 /**
  * Helper to work with settings
  */
-@Injectable({ providedIn: 'root' })
 export class SettingsHelper {
   /**
    * Predefined settings for the app loaded using json data
