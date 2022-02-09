@@ -3,13 +3,13 @@ import { AppComponent } from './components/app/app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { LanguageService } from './core/services/language.service';
 import { SEOResolver } from './core/resolvers/seo.resolver';
+import { LanguageUtilit } from './core/utilits/language.utilit';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: LanguageService.currentLanguage,
+    redirectTo: LanguageUtilit.currentLanguage,
     pathMatch: 'full',
   },
   {
