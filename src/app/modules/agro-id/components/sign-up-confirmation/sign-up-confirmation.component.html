@@ -1,4 +1,13 @@
-<form nz-form class="confirm-form" nzLayout="horizontal" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+  <div class="confirm-text">
+    <h3>Подтверждение</h3>
+    <p>На номер телефона +998994313902 <br> был
+       отправлено сообщение с кодом, <br> пожалуйста введите этот код</p>
+  </div>
+
+  
+  <form nz-form class="confirm-form" nzLayout="horizontal" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-divider></nz-divider>
   <nz-form-item nz-row>
     <nz-form-control nz-col class="confirm-control">
       <input maxlength="1" formControlName="num1" nz-input class="confirm-input" type="text">
@@ -21,12 +30,12 @@
   </nz-form-item >
 
   <div>
-    <a>Отправить код снова <i nz-icon nzType="redo" nzTheme="outline"></i></a>
+    <a>Если Вам не пришло смс с кодом, нажмите сюда<i style="margin-left: 50px;" nz-icon nzType="redo" nzTheme="outline"></i></a>
   </div>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="12">
-      <button nz-button class="" nzType="primary" (click)="nextComponent()" [disabled]="!validateForm.valid">Зарегестрироваться</button>
+      <button nz-button class="confirm-btn"  nzType="primary" (click)="nextComponent()" [disabled]="!validateForm.valid">Далее</button>
     </nz-form-control>
   </nz-form-item>
 </form>
