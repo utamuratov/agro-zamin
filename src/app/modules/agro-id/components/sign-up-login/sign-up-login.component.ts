@@ -14,7 +14,7 @@ import { Observable, Observer } from 'rxjs';
   styleUrls: ['./sign-up-login.component.less'],
 })
 export class SignUpLoginComponent implements OnInit {
-  @Output() changeComponentEvent = new EventEmitter<string>();
+  @Output() changeComponentEvent = new EventEmitter<number>();
 
   autoTips: Record<string, Record<string, string>> = {
     'zh-cn': {
@@ -28,8 +28,8 @@ export class SignUpLoginComponent implements OnInit {
     },
   };
 
-  switchNext = 'confirm';
-  switchPrev = 'password';
+  switchNext = 1;
+  switchPrev = 0;
   validateForm!: FormGroup;
   toggle = true;
   buttonTxt = true;

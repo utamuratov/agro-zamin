@@ -6,14 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.page.less'],
 })
 export class SignUpPage implements OnInit {
-  current = 0
-  signUpForm = 'info';
+  signUpForm = 0;
 
   constructor() {}
 
   ngOnInit() {}
 
-  swtichTo(item: string): void {
+  swtichTo(item: number): void {
     this.signUpForm = item;
   }
 }
