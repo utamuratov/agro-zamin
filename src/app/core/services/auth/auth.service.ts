@@ -1,14 +1,28 @@
-import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DITokens } from '../../config/di-tokens';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RequestSignUp } from 'src/app/shared/models/auth/request-sign-up.interface';
+import { SuccessMessage } from '../../models/success-message.interface';
+import { BaseService } from '../base.service';
+import { RequestSignIn } from 'src/app/shared/models/auth/request-sign-in.interface';
 
-@Injectable({providedIn: 'root'})
-export class AuthService {
-    constructor(
-        @Inject(DITokens.ENDPOINT_URL) private endpoint: string,
-        private httpClient: HttpClient) { }
-    
-    login() {
-        return this.httpClient.get<any>(this.endpoint + 'login');
-    }
+@Injectable({ providedIn: 'root' })
+export class AuthService extends BaseService {
+
+  /**
+   *
+   * @param model
+   * @returns
+   */
+  signIn(model: RequestSignIn) {
+    return this.post<RequestSignIn>('login', model);
+  }
+
+  /**
+   *
+   * @param params
+   * @returns
+   */
+  signUp(model: RequestSignUp): Observable<SuccessMessage> {
+    return this.post<SuccessMessage>('registration', model);
+  }
 }
