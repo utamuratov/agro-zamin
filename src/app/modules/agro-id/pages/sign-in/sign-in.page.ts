@@ -7,10 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignInPage implements OnInit {
   validateForm!: FormGroup;
-
+  resp = false
+  error = false
 
   /* Validate and submit form data */
   submitForm(): void {
+    if (!this.resp) {
+      this.error = true
+    }
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
     } else {
@@ -28,8 +32,7 @@ export class SignInPage implements OnInit {
   ngOnInit() {
     this.validateForm = this.fb.group({
       login: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true],
+      password: [null, [Validators.required]]
     });
   }
 }

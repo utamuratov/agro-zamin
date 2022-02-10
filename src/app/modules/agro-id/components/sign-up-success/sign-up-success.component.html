@@ -1,19 +1,30 @@
 <div class="success-text">
-  <h3>Успешная регистрация</h3>
-  <p>Поздравляем! Регистрация прошла <br> успешно, данные были сохранены!</p>
+  <h3 nz-typography>Успешная регистрация</h3>
 </div>
-
-<div>
+<nz-divider class="divider-custom-top"></nz-divider>
+<!-- <div>
   <img class="success-img" src="../../../../../assets/images/agro-id-images/Frame.svg">
 </div>
 
-  <div style="position: relative;" nz-result-extra>
-    <button routerLink="../" nz-button class="success-btn"  nzType="primary">Войти</button> 
-    
-    <p style="display: flex; font-size: 14px; margin-top: 20px; color: darkgray;"> 
-      <img style="margin-left: 35px; margin-right: 20px; width: 20px; height: 20px;"
-       src="../../../../../assets/images/agro-id-images/lock_24px.png" >
-       Ваша информация защищена
-    </p>
-  </div>
+<div nz-result-extra class="custom-btn">
+  <button nzBlock nzSpan="10" routerLink="../" nz-button class="success-btn"  nzType="primary">Войти</button> 
+</div> -->
 
+<nz-result
+  nzStatus="success"
+  nzTitle="Поздравляем!"
+  nzSubTitle="Регистрация прошла успешно, данные были сохранены!"
+>
+  <div nz-result-extra class="custom-btn" style="margin-top: 35px;">
+    <button
+      nzBlock
+      nzSpan="10"
+      routerLink="../"
+      nz-button
+      class="success-btn"
+      nzType="primary"
+    >
+      Войти
+    </button>
+  </div>
+</nz-result>
