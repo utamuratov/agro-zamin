@@ -1,4 +1,3 @@
-import { SignUpPasswordComponent } from './components/sign-up-password/sign-up-password.component';
 import { SignUpPage } from './pages/sign-up/sign-up.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +7,6 @@ import { SignInPage } from './pages/sign-in/sign-in.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* Sign Components */
 import { SignUpLoginComponent } from './components/sign-up-login/sign-up-login.component';
-import { SignUpInfoComponent } from './components/sign-up-info/sign-up-info.component';
 import { SignUpConfirmationComponent } from './components/sign-up-confirmation/sign-up-confirmation.component';
 import { SignUpSuccessComponent } from './components/sign-up-success/sign-up-success.component';
 /* NG-ZORRO-MODULES */
@@ -22,6 +20,7 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @NgModule({
   imports: [
@@ -39,15 +38,14 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzStepsModule,
     NzCarouselModule,
     NzLayoutModule,
-    NzDividerModule
+    NzDividerModule,
+    NzTypographyModule
   ],
   declarations: [
     AgroIdComponent,
     SignUpPage,
     SignInPage,
     SignUpLoginComponent,
-    SignUpInfoComponent,
-    SignUpPasswordComponent,
     SignUpConfirmationComponent,
     SignUpSuccessComponent
   ],

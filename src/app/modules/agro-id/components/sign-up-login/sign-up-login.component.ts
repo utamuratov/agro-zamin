@@ -1,5 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
 
 @Component({
@@ -8,19 +14,35 @@ import { Observable, Observer } from 'rxjs';
   styleUrls: ['./sign-up-login.component.less'],
 })
 export class SignUpLoginComponent implements OnInit {
-  @Output() changeComponentEvent = new EventEmitter<string>();
+  @Output() changeComponentEvent = new EventEmitter<number>();
 
-  switchNext = 'confirm';
-  switchPrev = 'password'
+  autoTips: Record<string, Record<string, string>> = {
+    'zh-cn': {
+      required: '必填项',
+    },
+    en: {
+      required: 'Input is required',
+    },
+    default: {
+      email: '邮箱格式不正确/The input is not valid email',
+    },
+  };
+
+  switchNext = 1;
+  switchPrev = 0;
   validateForm!: FormGroup;
-  toggle: boolean = true;
+  toggle = true;
   buttonTxt = true;
   validPhone = /(^\+\d\d\d\d\d\d\d\d\d\d\d\d)$/;
+  passwordVisible = false;
+  password?: string;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.validateForm = this.fb.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
       phoneNumber: [
         null,
         [Validators.required, Validators.pattern(this.validPhone)],
@@ -36,12 +58,7 @@ export class SignUpLoginComponent implements OnInit {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
+      this.validateForm.markAllAsTouched();
     }
   }
 
@@ -68,7 +85,9 @@ export class SignUpLoginComponent implements OnInit {
   }
 
   validateConfirmPassword(): void {
-    setTimeout(() => this.validateForm.controls['confirm'].updateValueAndValidity());
+    setTimeout(() =>
+      this.validateForm.controls['confirm'].updateValueAndValidity()
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -95,11 +114,21 @@ export class SignUpLoginComponent implements OnInit {
   };
 
   nextComponent(): void {
-    this.submitForm()
-    this.changeComponentEvent.emit(this.switchNext);
+    if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
+      this.changeComponentEvent.emit(this.switchNext);
+    } else {
+      this.validateForm.markAllAsTouched();
+      Object.values(this.validateForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
 
   prevComponent(): void {
-    this.changeComponentEvent.emit(this.switchPrev)
+    this.changeComponentEvent.emit(this.switchPrev);
   }
 }

@@ -1,30 +1,23 @@
-<div nzSm="24">
-  
-<nz-steps [nzCurrent]="current">
-  <nz-step nzTitle="Ввод данных"></nz-step>
-  <nz-step nzTitle="Подтверждение"></nz-step>
-  <nz-step nzTitle="Регистрация"></nz-step>
-</nz-steps>
+<div nz-col nzSm="24">
+  <div nz-row>
+    <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="0" nzXl="24">
+      <nz-steps [nzCurrent]="signUpForm">
+        <nz-step nzTitle="Ввод данных"></nz-step>
+        <nz-step nzTitle="Подтверждение"></nz-step>
+        <nz-step nzTitle="Регистрация"></nz-step>
+      </nz-steps>
+    </div>
+  </div>
 
-<div [ngSwitch]="signUpForm">
- 
-  <!-- <app-sign-up-info
-    (changeComponentEvent)="swtichTo($event)"
-    *ngSwitchCase="'info'"
-  ></app-sign-up-info> -->
-  <app-sign-up-password
-    (changeComponentEvent)="swtichTo($event)"
-    *ngSwitchCase="'password'"
-  ></app-sign-up-password>
-  <app-sign-up-login
-    (changeComponentEvent)="swtichTo($event)"
-    *ngSwitchCase="'info'"
-  ></app-sign-up-login>
-  <app-sign-up-confirmation
-    (changeComponentEvent)="swtichTo($event)"
-    *ngSwitchCase="'confirm'"
-  ></app-sign-up-confirmation>
-  <app-sign-up-success *ngSwitchCase="'success'"></app-sign-up-success>
-</div>
-
+  <div [ngSwitch]="signUpForm">
+    <app-sign-up-login
+      (changeComponentEvent)="swtichTo($event)"
+      *ngSwitchCase="0"
+    ></app-sign-up-login>
+    <app-sign-up-confirmation
+      (changeComponentEvent)="swtichTo($event)"
+      *ngSwitchCase="1"
+    ></app-sign-up-confirmation>
+    <app-sign-up-success *ngSwitchCase="2"></app-sign-up-success>
+  </div>
 </div>
